@@ -36,11 +36,11 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
    git clone https://github.com/seu-usuario/seu-repositorio.git
 2. Instale as dependências
 
-- prompt-sync
+ - prompt-sync
    ```bash
    npm i prompt-sync
 
-- momentJS
+ - momentJS
    ```bash
    npm i moment
 
