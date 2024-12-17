@@ -32,8 +32,8 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
 
 1. Clone o repositório para o seu computador:
 
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+  ```bash
+  git clone https://github.com/seu-usuario/seu-repositorio.git
 2. Instale as dependências
 
 - prompt-sync
@@ -45,8 +45,8 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
   npm i moment
 
 3. Abra o terminal, e rode o projeto com o comando
-   ```bash
-   npm start
+  ```bash
+  npm start
 
 
 ---
