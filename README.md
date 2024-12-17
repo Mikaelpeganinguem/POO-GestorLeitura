@@ -56,6 +56,10 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
 - Mikael Carlos Ribeiro de França
   - Institucional: mcrf1@aluno.ial.edu.br
   - Pessoal: carlosmikael273@gmail.com
+- Misia Taís dos Santos Silva Miranda 
+  - Institucional: mtssm2@aluno.ifal.edu.br 
+  - Pessoal: snkim199@gmail.com
+
 
 
 
