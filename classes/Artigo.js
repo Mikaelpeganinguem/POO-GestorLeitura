@@ -11,7 +11,7 @@ class Artigo extends Material {
 
 
     get volume() {
-        return this._volume;
+        return this.#volume;
     }
 
     get numPag() {
