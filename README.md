@@ -52,7 +52,8 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
 ---
 
 
-### Participandes
+### Equipe do projeto
+
 - Mikael Carlos Ribeiro de França
   - Institucional: mcrf1@aluno.ial.edu.br
   - Pessoal: carlosmikael273@gmail.com
