@@ -59,6 +59,9 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
 - Misia Taís dos Santos Silva Miranda 
   - Institucional: mtssm2@aluno.ifal.edu.br 
   - Pessoal: snkim199@gmail.com
+- Mayara Rita Paulino Eliziario 
+  - Institucional: mrpe1@aluno.ifal.edu.br
+  - Pessoal: mayararita70@gmail.com
 
 
 
