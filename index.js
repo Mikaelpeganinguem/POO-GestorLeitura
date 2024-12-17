@@ -15,8 +15,7 @@ ${"-".repeat(50)}
   3️⃣  ➡️  Excluir Materiais
   4️⃣  ➡️  Materiais Lidos (🚫 INDISPONÍVEL)
   5️⃣  ➡️  Pesquisar Materiais
-  6️⃣  ➡️  Editar Material
-  7️⃣  ➡️  Encerrar
+  6️⃣  ➡️  Encerrar
 ${"-".repeat(50)}
     `);
 
@@ -71,5 +70,5 @@ function projeto(escolha) {
             console.log("❌ Opção não encontrada. Tente novamente.");
             break;
     }
-    console.log("=".repeat(50)); // Linha de separação
+    console.log("=".repeat(50));
 }
