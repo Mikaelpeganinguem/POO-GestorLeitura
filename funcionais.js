@@ -88,66 +88,113 @@ function editData() {
     const index = materiais.findIndex(i => i.id === itemUser);
 
     if (index !== -1) {
-        let title = prompt("Título: ");
-        let author = prompt("Autor: ");
-        let typeMaterial = prompt("Tipo de Material: ").toLowerCase();
-
-        let startDate = prompt("Data de início (DD/MM/YYYY): ");
-        while (!verifyDate(startDate)) {
-            startDate = prompt("Insira uma data válida: ");
+        let title = prompt("Mudar título? (N/n): ").toLowerCase();
+        if (title === "n" || title.trim() === "") {
+            title = materiais[index].titulo;
         }
 
-        let endDate = prompt("Data de término de leitura (DD/MM/YYYY): ");
-        while (!verifyDate(endDate)) {
-            endDate = prompt("Insira uma data válida: ");
+        let author = prompt("Mudar autor? (N/n): ").toLowerCase();
+        if (author === "n" || author.trim() === "") {
+            author = materiais[index].autor;
         }
 
-        const dateValidation = differDate(startDate, endDate);
-        if (!dateValidation.sucess) {
-            return dateValidation.menssage;
+        let typeMaterial = prompt("Mudar o Tipo de Material para: (N/n): ").toLowerCase();
+        if (typeMaterial === "n" || typeMaterial.trim() === "") {
+            typeMaterial = materiais[index].editTipoMaterial;
         }
 
-        materiais[index].titulo = title;
-        materiais[index].autor = author;
-        materiais[index].tipo_de_material = typeMaterial;
-        materiais[index].data_de_inicio = startDate;
-        materiais[index].data_de_termino = endDate;
+        let startDate = prompt("Mudar data de início? (DD/MM/YYYY) (N/n): ");
+        if (startDate.toLowerCase() === "n" || startDate.trim() === "") {
+            startDate = materiais[index].editInicio;
+        } else {
+            while (!verifyDate(startDate)) {
+                startDate = prompt("Insira uma data válida: ");
+            }
+        }
+
+        let endDate = prompt("Mudar data de término? (DD/MM/YYYY) (N/n): ");
+        if (endDate.toLowerCase() === "n" || endDate.trim() === "") {
+            endDate = materiais[index].editFim;
+        } else {
+            while (!verifyDate(endDate)) {
+                endDate = prompt("Insira uma data válida: ");
+            }
+        }
+
+        materiais[index].editTitulo = title;
+        materiais[index].editAutor = author;
+        materiais[index].editTipoMaterial = typeMaterial;
+        materiais[index].editInicio = startDate;
+        materiais[index].editFim = endDate;
 
         switch (typeMaterial) {
             case 'livro':
-                materiais[index].numPaginas = prompt("Número de páginas: ");
+                let pag = prompt("Editar Número de páginas? (N/n): ").toLowerCase();
+                if (pag === "n" || pag.trim() === "") {
+                    pag = materiais[index].numPaginas;
+                } else {
+                    materiais[index].numPaginas = parseInt(pag);
+                }
                 break;
+
             case 'artigo':
-                materiais[index].volume = prompt("Número do volume: ");
-                materiais[index].numPag = prompt("Número de páginas: ");
-                materiais[index].periodico = prompt("Nome do Periódico: ");
+                let volume = prompt("Editar Número do volume? (N/n): ").toLowerCase();
+                if (volume === "n" || volume.trim() === "") {
+                    volume = materiais[index].volume;
+                } else {
+                    materiais[index].volume = parseInt(volume);
+                }
+
+                let pagi = prompt("Editar Número de páginas? (N/n): ").toLowerCase();
+                if (pagi === "n" || pagi.trim() === "") {
+                    pagi = materiais[index].numPag;
+                } else {
+                    materiais[index].numPag = parseInt(pagi);
+                }
+
+                let peri = prompt("Editar Nome do Periódico? (N/n): ").toLowerCase();
+                if (peri === "n" || peri.trim() === "") {
+                    peri = materiais[index].periodico;
+                } else {
+                    materiais[index].periodico = peri;
+                }
                 break;
+
             case 'revista':
-                materiais[index].numEdicao(prompt("Número da edição: "));
+                let numEdic = prompt("Editar Número da edição? (N/n): ").toLowerCase();
+                if (numEdic === "n" || numEdic.trim() === "") {
+                    numEdic = materiais[index].numEdicao;
+                } else {
+                    materiais[index].numEdicao = parseInt(numEdic);
+                }
                 break;
+
             default:
                 return "Tipo de material inválido!";
         }
-        return "Material atualizado com sucesso!";
+        return "✅ Material atualizado com sucesso!";
     } else {
-        return "Material não encontrado!";
+        return "❌ Material não encontrado!";
     }
 }
 
-function search() {
-    let searchTitle = prompt("Digite 'Título - autor': ");
 
+function search() {
+    let searchTitle = prompt("Digite  'Título - autor': ");
     const [titulo, autor] = searchTitle.split(" - ");
 
-    let searchUser = materiais.find(item =>
+    let searchResults = materiais.filter(item =>
         item.titulo === titulo && item.autor === autor
     );
 
-    if (searchUser === undefined) {
+    if (searchResults.leng === 0) {
         return `${searchTitle} Não encontrado`;
     }
 
-    return searchUser.detalhes();
+    console.log(`Materiais encontrados: ${searchResults.length}`);
+    searchResults.forEach(item => {
+        console.log(item.detalhes());
+    });
 }
 
 function remove() {
@@ -161,4 +208,12 @@ function remove() {
     return "Material não encontrado";
 }
 
-module.exports = { materiais, materialRegistration, search, remove, editData };
+
+function materialLido() {
+    let matLidos = materiais.filter(i => i.lido === "Sim")
+    matLidos.forEach(item => {
+        console.log(item.detalhes())
+    });
+}
+
+module.exports = { materiais, materialRegistration, search, remove, editData, materialLido };
