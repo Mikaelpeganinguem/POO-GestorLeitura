@@ -1,3 +1,5 @@
+const { verifyDate } = require('../verifica.js');
+
 class Material {
     static #id = 0;
 
@@ -16,20 +18,29 @@ class Material {
     get editTipoMaterial() {
         return this.tipo_de_material;
     }
-
     get editFim() {
         return this.data_de_termino;
     }
-    
     get editInicio() {
         return this.data_de_início;
     }
+    get eidtAutor(){
+        return this.autor;
+    }
+    get editTitulo(){
+        return this.titulo;
+    }
 
-    
+
+    set editTitulo(novo){
+        this.titulo = novo;
+    }
+    set editAutor(novo){
+        this.autor = novo;
+    }
     set editTipoMaterial(novoTipo) {
         this.tipo_de_material = novoTipo;
     }
-    
     set editInicio(data) {
         if (verifyDate(data)) {
             this.data_de_início = data;
@@ -37,7 +48,6 @@ class Material {
         }
         return "Formato de data não aceito";
     }
-
     set editFim(data) {
         if (verifyDate(data)) {
             this.data_de_termino = data;
