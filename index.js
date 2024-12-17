@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const { materiais, materialRegistration, search, remove, editData } = require('./funcionais.js');
+const { materiais, materialRegistration, search, remove, materialLido} = require('./funcionais.js');
 
 console.clear();
 console.log("=".repeat(50));
@@ -13,7 +13,7 @@ ${"-".repeat(50)}
   1️⃣  ➡️  Adicionar Material
   2️⃣  ➡️  Ver Materiais
   3️⃣  ➡️  Excluir Materiais
-  4️⃣  ➡️  Materiais Lidos (🚫 INDISPONÍVEL)
+  4️⃣  ➡️  Materiais Lidos
   5️⃣  ➡️  Pesquisar Materiais
   6️⃣  ➡️  Encerrar
 ${"-".repeat(50)}
@@ -47,17 +47,13 @@ function projeto(escolha) {
             console.log(remove());
             break;
         case 4:
-            console.log("🚫 Materiais lidos ainda estão indisponíveis.");
+            console.log(materialLido());
             break;
         case 5:
             console.log("🔍 Pesquisando material...");
             console.log(search());
             break;
         case 6:
-            console.log("✏️ Editando material...");
-            console.log(editData());
-            break;
-        case 7:
             console.log("🚪 Programa finalizado!");
             console.log(`
 --- FEITO POR: ---
