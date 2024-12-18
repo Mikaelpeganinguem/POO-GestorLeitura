@@ -20,7 +20,7 @@ class Artigo extends Material {
 
     set volume(num) {
         let convert = parseInt(num);
-        while (isNaN(convert) || convert < 0) {
+        while (convert < 0) {
             convert = parseInt(prompt("Digite um formato válido para o volume: "));
         }
         this.#volume = convert;
@@ -28,7 +28,7 @@ class Artigo extends Material {
 
     set numPag(num) {
         let convert = parseInt(num);
-        while (isNaN(convert) || convert < 0) {
+        while (convert < 0) {
             convert = parseInt(prompt("Digite um formato válido para o número de páginas: "));
         }
         this.paginas = convert;
