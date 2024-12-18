@@ -57,8 +57,8 @@ class Material {
     }
 
     
-    statusLeitura() {
-        if (!this.fim_da_leitura) {
+    statusLeitura(resp) {
+        if (resp === "s") {
             this.fim_da_leitura = true;
         }
         this.fim_da_leitura = false;
