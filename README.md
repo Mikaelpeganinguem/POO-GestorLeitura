@@ -54,6 +54,7 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
 ### Dificuldades no projeto
 
 1.**A equipe teve dificuldade na introdução da funcionalidade de **editar material**. Não conseguindo introduzi-la no projeto de forma utilizável, ela não se encontra na versão final.**
+
 2.**Será comum na execução do projeto, visualizar uma mensagem de **"Circular dependency"**, pois não foi encontrado por nenhum dos membros o motivo pelo qual aparece essa mensagem.**
 
 ---
