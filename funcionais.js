@@ -17,17 +17,23 @@ function materialRegistration() {
     }
 
     let author = prompt("Autor: ");
-    while(autor === "") {
+    while (author === "") {
         author = prompt("Insira o nome do Autor: ");
     }
 
     let typeMaterial = prompt("Tipo de Material (Artigo/Livro/Revista): ").toLowerCase();
-    while(typeMaterial !== "artigo" || typeMaterial !== "livro" || typeMaterial !== "revista"){
+    while (!["livro", "revista", "artigo"].includes(typeMaterial)) {
         typeMaterial = prompt("Digite um Material válido: ");
     }
 
     let categorie = prompt("Categoria: ");
     categorie = categorie.toLowerCase();
+
+    let leitura = prompt("Você ja leu? (S/N): ").toLowerCase();
+    while (leitura === "" || !["s", "n"].includes(leitura)) {
+        leitura = prompt("Informe se já leu: ");
+    }
+    
 
     let startDate = prompt("Data de início (DD/MM/YYYY): ");
     while (!verifyDate(startDate)) {
@@ -48,7 +54,9 @@ function materialRegistration() {
     }
 
     materialFactory(typeMaterial, title, author, startDate, endDate);
-
+    if (leitura === "s") {
+        newMaterial.statusLeitura(leitura);
+    }
     //return ["Mensagem: Objeto adiciondo", { title, author, typeMaterial, startDate, endDate }];
     return "Material adicionado";
 }
