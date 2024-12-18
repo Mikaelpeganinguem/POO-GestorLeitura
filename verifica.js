@@ -42,19 +42,19 @@ function differDate(start, end) {
 
 
 function isArray(obj) {
-  return obj && obj.constructor === Array;
+  //return obj && obj.constructor === Array;
+  return typeof obj === 'object';
 }
 
 
 function ifExist(obj) {
   if (!isArray(obj)) {
-    console.error("Erro: O objeto fornecido não é um array."); 
-    return false;
+    return "Erro: O objeto fornecido não é um array.";
   }
 
   const listClass = [materiais, Livros, Revistas, Artigos];
 
-  return listClass.some(collection =>
+  return listClass.some(collection => collection && collection.length > 0 &&
     collection.some(item =>
       item.titulo === obj.titulo &&
       item.autor === obj.autor &&
@@ -73,4 +73,4 @@ function test() {
   console.assert(verifyDate("30/05/2009"), `Erro: 30/05/2009`)
 }
 //test();
-module.exports = { verifyDate, differDate, ifExist };
+module.exports = { verifyDate, differDate, ifExist, test };
