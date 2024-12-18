@@ -12,10 +12,21 @@ var Artigos = [];
 
 function materialRegistration() {
     let title = prompt("Titulo: ");
-    let author = prompt("Autor: ");
-    let typeMaterial = prompt("Tipo de Material: ");
-    let categorie = prompt("Categoria: ");
+    while (title === "") {
+        title = prompt("Insira um título: ");
+    }
 
+    let author = prompt("Autor: ");
+    while(autor === "") {
+        author = prompt("Insira o nome do Autor: ");
+    }
+
+    let typeMaterial = prompt("Tipo de Material (Artigo/Livro/Revista): ").toLowerCase();
+    while(typeMaterial !== "artigo" || typeMaterial !== "livro" || typeMaterial !== "revista"){
+        typeMaterial = prompt("Digite um Material válido: ");
+    }
+
+    let categorie = prompt("Categoria: ");
     categorie = categorie.toLowerCase();
 
     let startDate = prompt("Data de início (DD/MM/YYYY): ");
@@ -38,7 +49,8 @@ function materialRegistration() {
 
     materialFactory(typeMaterial, title, author, startDate, endDate);
 
-    return ["Mensagem: Objeto adiciondo", { title, author, typeMaterial, startDate, endDate }];
+    //return ["Mensagem: Objeto adiciondo", { title, author, typeMaterial, startDate, endDate }];
+    return "Material adicionado";
 }
 
 function materialFactory(type, titulo, autor, inicio, termino) {
