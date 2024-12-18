@@ -48,7 +48,7 @@ function isArray(obj) {
 
 function ifExist(obj) {
   if (!isArray(obj)) {
-    console.error("Erro: Um ou mais arrays não estão inicializados corretamente.");
+    console.error("Erro: O objeto fornecido não é um array."); 
     return false;
   }
 
@@ -63,6 +63,7 @@ function ifExist(obj) {
     )
   );
 }
+
 
 
 function test() {
