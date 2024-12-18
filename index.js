@@ -7,7 +7,7 @@ console.log("📚 Bem-vindo ao seu Gestor de Leituras 📚");
 console.log("=".repeat(50));
 
 let escolha = 0;
-while (escolha !== 7) {
+while (escolha !== 6) {
     console.log(`
 ${"-".repeat(50)}
   1️⃣  ➡️  Adicionar Material
