@@ -2,7 +2,7 @@ const Material = require('./classes/Material');
 const Artigo = require('./classes/Artigo.js');
 const Revista = require('./classes/Revista.js');
 const Livro = require('./classes/Livro.js');
-const { materiais, Revistas, Livros, Artigos, test } = require('./funcionais.js');
+const { materiais, Revistas, Livros, Artigos, test } = require('./utils/Funcionais.js');
 
 
 const mat1 = new Material("Livro A", "João", "01/01/2023", "10/01/2023", "Livro");
