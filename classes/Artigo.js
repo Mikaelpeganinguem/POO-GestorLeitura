@@ -1,4 +1,4 @@
-const Material = require('./Material.js');  // Verifique o caminho correto para o Material.js
+const Material = require('./Material.js');
 const prompt = require('prompt-sync')();
 
 class Artigo extends Material {

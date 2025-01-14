@@ -42,29 +42,6 @@ class Verifica {
     }
     return { sucesso: true };
   }
-
-  static isArray(obj) {
-    return typeof obj === 'object';
-  }
-
-
-  static ifExist(obj) {
-    if (!this.isArray(obj)) {
-      return "Erro: O objeto fornecido não é um array.";
-    }
-
-    const listClass = [materiais, Livros, Revistas, Artigos];
-
-    return listClass.some(collection => collection && collection.length > 0 &&
-      collection.some(item =>
-        item.titulo === obj.titulo &&
-        item.autor === obj.autor &&
-        item.data_de_inicio === obj.data_de_inicio &&
-        item.data_de_termino === obj.data_de_termino
-      )
-    );
-  }
-
 }
 
 

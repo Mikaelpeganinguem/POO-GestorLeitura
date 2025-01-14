@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+const Cadastro = require('../classes/Cadastro.js');
 const Material = require('../classes/Material.js');
 const Artigo = require('../classes/Artigo.js');
 const Livro = require('../classes/Livro.js');
@@ -8,7 +9,7 @@ const Verifica = require('./Verifica.js');
 
 class Funcionais {
 
-    static materialRegistration() {
+    static materialRegistration(cadastro) {
         let title = prompt("Titulo: ");
         while (title === "") {
             title = prompt("Insira um título: ");
@@ -50,16 +51,18 @@ class Funcionais {
             return diffResult.mensagem;
         }
 
-        let newMaterial = new Material(title, author, startDate, endDate);
+        let newMaterial = this.materialFactory(typeMaterial, title, author, startDate, endDate);
+        // let newMaterial = new Material(title, author, startDate, endDate);
 
-        if (Verifica.ifExist(newMaterial)) {
-            return "Este material já existe!";
+        if (leitura === "s" && newMaterial) {
+            newMaterial.statusLeitura = leitura;
         }
 
-        this.materialFactory(typeMaterial, title, author, startDate, endDate);
-        if (leitura === "s") {
-            newMaterial.statusLeitura(leitura);
-        }
+        cadastro.adicionarMaterial(newMaterial); 
+        
+
+        console.log("Material adicionado com sucesso:");
+        console.log(newMaterial.detalhes());
         return "Material adicionado";
     }
 
@@ -68,11 +71,13 @@ class Funcionais {
         switch (type.toLowerCase()) {
             case 'livro':
                 material = new Livro(titulo, autor, inicio, termino, type);
-
                 material.editTipoMaterial = "Livro";
                 material.numPaginas = prompt("Número de páginas: ");
-                Livros.push(material);
-                break;
+
+                // cadastro.materiais = material;
+//                 cadastro.Livros = material;
+                return material || null;
+
             case 'artigo':
                 material = new Artigo(titulo, autor, inicio, type);
 
@@ -86,68 +91,27 @@ class Funcionais {
                 let periodico = prompt("Nome do Periódico: ")
                 material.periodico = periodico;
 
-                Artigos.push(material);
-                break;
+                // cadastro.Artigos = material;
+                // cadastro.materiais = material;
+
+                return material || null;
 
             case 'revista':
                 material = new Revista(titulo, autor, inicio, type);
 
                 material.editTipoMaterial = "Revista";
                 material.numEdicao(prompt("Número da edição: "));
-                Revistas.push(material);
-                break;
+                // cadastro.Revistas = material;
+                // cadastro.materiais = material;
+
+                return material || null;
+
             default:
                 console.error("Tipo de material inválido!");
                 return { message: "Tipo de material inválido!", Success: false };
         }
-        materiais.push(material);
-        console.log(material.detalhes());
-        return true;
+        return material;
     }
-
-    static search() {
-        let searchTitle = prompt("Digite  'Título - autor': ");
-        const [titulo, autor] = searchTitle.split(" - ");
-
-        let searchResults = materiais.filter(item =>
-            item.titulo === titulo && item.autor === autor
-        );
-
-        if (searchResults.leng === 0) {
-            return `${searchTitle} Não encontrado`;
-        }
-
-        console.log(`Materiais encontrados: ${searchResults.length}`);
-        searchResults.forEach(item => {
-            console.log(item.detalhes());
-        });
-    }
-
-    static remove() {
-        let itemUser = parseInt(prompt("Digite o id do material: "));
-        let index = materiais.findIndex(i => i.id === itemUser);
-
-        if (index !== -1) {
-            materiais.splice(index, 1);
-            return "Material removido";
-        }
-        return "Material não encontrado";
-    }
-
-
-    static materialLido() {
-        let matLidos = materiais.filter(i => i.lido === "Sim")
-        matLidos.forEach(item => {
-            console.log(item.detalhes());
-        });
-    }
-
-
 }
 
-var materiais = [];
-var Revistas = [];
-var Livros = [];
-var Artigos = [];
-
-module.exports = { Funcionais, materiais, Revistas, Livros, Artigos };
+module.exports = Funcionais;

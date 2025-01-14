@@ -1,4 +1,4 @@
-const Material = require('./classes/Material');
+const Material = require('./classes/Material.js');
 const Artigo = require('./classes/Artigo.js');
 const Revista = require('./classes/Revista.js');
 const Livro = require('./classes/Livro.js');

@@ -1,15 +1,17 @@
 const prompt = require('prompt-sync')();
-const { Funcionais, materiais } = require('./Funcionais.js');
+const Funcionais = require('./Funcionais.js');
+const Cadastro = require('../classes/Cadastro.js');
 
 class Menu {
     static createMenu() {
-
         console.clear();
         console.log("=".repeat(50));
         console.log("📚 Bem-vindo ao seu Gestor de Leituras 📚");
         console.log("=".repeat(50));
-    
+
         let escolha = 0;
+        const cadastro = new Cadastro();
+
         while (escolha !== 6) {
             console.log(`
     ${"-".repeat(50)}
@@ -21,42 +23,38 @@ class Menu {
       6️⃣  ➡️  Encerrar
     ${"-".repeat(50)}
         `);
-    
+
             escolha = parseInt(prompt("👉 Escolha uma das opções acima: "));
-            console.log(this.projeto(escolha));
+            this.projeto(escolha, cadastro); // Passe o cadastro para a função projeto
         }
     }
 
-    
-    static projeto(escolha) {
-        console.log("=".repeat(50)); // Linha de separação
+    static projeto(escolha, cadastro) { 
+        console.log("=".repeat(50)); 
         switch (escolha) {
             case 1:
                 console.log("📥 Adicionando material...");
-                console.log(Funcionais.materialRegistration());
+                console.log(Funcionais.materialRegistration(cadastro));
                 break;
             case 2:
                 console.log("📋 Verificando materiais...");
-                if (materiais.length === 0) {
+                if (cadastro.listarMateriais()) {
                     console.log("❌ Nada cadastrado!");
                 } else {
                     console.log("📚 Lista de Materiais:");
-                    materiais.forEach(i => {
-                        console.log(i.detalhes());
-                        console.log("");
-                    });
+                    console.log(cadastro.listarMateriais());
                 }
                 break;
             case 3:
                 console.log("🗑️ Excluindo material...");
-                console.log(Funcionais.remove());
+                console.log(cadastro.remover());
                 break;
             case 4:
-                console.log(Funcionais.materialLido());
+                console.log(cadastro.materialLido());
                 break;
             case 5:
                 console.log("🔍 Pesquisando material...");
-                console.log(Funcionais.search());
+                console.log(cadastro.pesquisarMaterial());
                 break;
             case 6:
                 console.log("🚪 Programa finalizado!");
@@ -73,7 +71,6 @@ class Menu {
         }
         console.log("=".repeat(50));
     }
-    
 }
 
 module.exports = Menu;

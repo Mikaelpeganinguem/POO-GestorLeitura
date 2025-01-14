@@ -37,15 +37,8 @@ Antes de começar, você precisará ter o **Node.js** instalado no seu computado
    
 2. Instale as dependências
 
- - prompt-sync
-
    ```bash
-   npm i prompt-sync
-
- - momentJS
-
-   ```bash
-   npm i moment
+   npm i
 
 3. Abra o terminal, e rode o projeto com o comando
 
